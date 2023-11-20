@@ -11,9 +11,9 @@ import UIKit
 class FloatingTabBar: UITabBar {
     // MARK: - Parameters
     /// Bottom spacing of custom tab bar
-    private let bottomSpacing: CGFloat = 15
+    @IBInspectable var bottomSpacing: CGFloat = 15
     /// Custom tab bar height
-    private let tabBarHeight: CGFloat = 64
+    @IBInspectable var tabBarHeight: CGFloat = 64
     /// Without bottom safe area, this value is custom
     /// tab bar height (64) + bottom spacing
     private var tabBarAndBottomSpacingHeight: CGFloat = 79
