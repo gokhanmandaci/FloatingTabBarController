@@ -24,10 +24,6 @@ class FloatingTabBarController: UITabBarController {
         
         setImageInsets()
     }
-    
-    func setConfig() {
-        Config.shared.height = 90
-    }
 }
 
 // MARK: - Methods
