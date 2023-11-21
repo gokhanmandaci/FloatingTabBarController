@@ -10,15 +10,8 @@ import UIKit
 
 class FloatingTabBar: UITabBar {
     // MARK: - Parameters
-    /// Bottom spacing of custom tab bar
-    @IBInspectable var bottomSpacing: CGFloat = 15
-    /// Custom tab bar height
-    @IBInspectable var tabBarHeight: CGFloat = 64
-    /// Without bottom safe area, this value is custom
-    /// tab bar height (64) + bottom spacing
-    private var tabBarAndBottomSpacingHeight: CGFloat = 79
-    /// Is superSize height is greater than tabBarHeight
-    var isDefaultGreater: Bool = false
+    /// Tab bar height default 49
+    @IBInspectable var height: CGFloat = 49
     
     /// https://stackoverflow.com/a/48198123
     /// Solution for hidesBottomBarWhenPushed delay.
@@ -26,14 +19,11 @@ class FloatingTabBar: UITabBar {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let superSize = super.sizeThatFits(size)
         
-        /// If this value is greater than custom tab bar height
-        /// use supersize height. Ex: Adding safe area bottom
-        if superSize.height > tabBarHeight {
-            isDefaultGreater = true
-            tabBarAndBottomSpacingHeight = superSize.height + bottomSpacing
+        if height != Config.shared.tabBarHeight {
+            Config.shared.tabBarHeight = height
         }
-        
-        return CGSize(width: superSize.width, height: tabBarAndBottomSpacingHeight)
+
+        return CGSize(width: superSize.width, height: Config.shared.tabBarHeight)
     }
 }
 
