@@ -84,6 +84,8 @@ class FloatingTabBarController: UITabBarController {
     @IBInspectable var gradientStartColor: UIColor = .black
     /// Gradient end color
     @IBInspectable var gradientEndColor: UIColor = .white
+    /// Ignores safe area when calculating bottom spacing default false
+    @IBInspectable var ignoresSafeAreaBottom: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +101,11 @@ class FloatingTabBarController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tabBar.frame.origin.y = view.frame.height - (tabBarHeight + Config.shared.bottomSpacing)
+        if Config.shared.ignoresSafeAreaBottom {
+            tabBar.frame.origin.y = view.frame.height - (tabBarHeight + Config.shared.bottomSpacing)
+        } else {
+            tabBar.frame.origin.y = view.frame.height - (tabBarHeight + Config.shared.bottomSpacing + view.safeAreaInsets.bottom)
+        }
         
         setImageInsets()
     }
@@ -146,7 +152,8 @@ extension FloatingTabBarController {
             gradientStartLocation: gradientStartLocation,
             gradientEndLocation: gradientEndLocation,
             gradientStartColor: gradientStartColor,
-            gradientEndColor: gradientEndColor
+            gradientEndColor: gradientEndColor,
+            ignoresSafeAreaBottom: ignoresSafeAreaBottom
         )
         
         Config.shared.setConfig(model: configModel)

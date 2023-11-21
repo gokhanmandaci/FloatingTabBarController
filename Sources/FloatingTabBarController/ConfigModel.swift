@@ -33,6 +33,7 @@ struct ConfigModel {
     let gradientEndLocation: CGFloat
     let gradientStartColor: UIColor
     let gradientEndColor: UIColor
+    let ignoresSafeAreaBottom: Bool
 
     init(
         tabBarHeight: CGFloat = 64,
@@ -58,7 +59,8 @@ struct ConfigModel {
         gradientStartLocation: CGFloat = -1.0,
         gradientEndLocation: CGFloat = -1.0,
         gradientStartColor: UIColor = .black,
-        gradientEndColor: UIColor = .white
+        gradientEndColor: UIColor = .white,
+        ignoresSafeAreaBottom: Bool = false
     ) {
         self.tabBarHeight = tabBarHeight
         self.bottomSpacing = bottomSpacing
@@ -84,7 +86,9 @@ struct ConfigModel {
         self.gradientEndLocation = gradientEndLocation
         self.gradientStartColor = gradientStartColor
         self.gradientEndColor = gradientEndColor
+        self.ignoresSafeAreaBottom = ignoresSafeAreaBottom
     }
 }
+
 
 #endif

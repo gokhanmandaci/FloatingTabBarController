@@ -38,6 +38,7 @@ final class Config {
     var gradientEndLocation: CGFloat = -1.0
     var gradientStartColor: UIColor = .black
     var gradientEndColor: UIColor = .white
+    var ignoresSafeAreaBottom: Bool = false
     
     func setConfig(model: ConfigModel) {
         tabBarHeight = model.tabBarHeight
@@ -64,7 +65,9 @@ final class Config {
         gradientEndLocation = model.gradientEndLocation
         gradientStartColor = model.gradientStartColor
         gradientEndColor = model.gradientEndColor
+        ignoresSafeAreaBottom = model.ignoresSafeAreaBottom
     }
 }
+
 
 #endif
