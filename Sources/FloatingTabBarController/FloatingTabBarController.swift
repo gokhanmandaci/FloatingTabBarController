@@ -257,6 +257,8 @@ extension FloatingTabBarController {
                 Config.shared.minimumItemWidth,
                 (customTabBarWidth - totalInnerHorizontalSpacing) / CGFloat(tabBarItemsCount)
             )
+            tabBar.tintColor = selectedItemColor
+            tabBar.unselectedItemTintColor = itemColor
         }
         
         setTabBar()
