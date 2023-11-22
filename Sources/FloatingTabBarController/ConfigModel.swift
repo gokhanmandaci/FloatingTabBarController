@@ -38,6 +38,8 @@ struct ConfigModel {
     let gradientStartColor: UIColor
     let gradientEndColor: UIColor
     let ignoresSafeAreaBottom: Bool
+    let itemColor: UIColor
+    let selectedItemColor: UIColor
 
     init(
         tabBarHeight: CGFloat = 64,
@@ -68,7 +70,9 @@ struct ConfigModel {
         gradientEndLocation: CGFloat = -1.0,
         gradientStartColor: UIColor = .black,
         gradientEndColor: UIColor = .white,
-        ignoresSafeAreaBottom: Bool = false
+        ignoresSafeAreaBottom: Bool = false,
+        itemColor: UIColor = .blue,
+        selectedItemColor: UIColor = .blue
     ) {
         self.tabBarHeight = tabBarHeight
         self.bottomSpacing = bottomSpacing
@@ -99,6 +103,8 @@ struct ConfigModel {
         self.gradientStartColor = gradientStartColor
         self.gradientEndColor = gradientEndColor
         self.ignoresSafeAreaBottom = ignoresSafeAreaBottom
+        self.itemColor = itemColor
+        self.selectedItemColor = selectedItemColor
     }
 }
 

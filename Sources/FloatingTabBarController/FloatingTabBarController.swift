@@ -94,6 +94,10 @@ class FloatingTabBarController: UITabBarController {
     @IBInspectable var gradientEndColor: UIColor = .white
     /// Ignores safe area when calculating bottom spacing default false
     @IBInspectable var ignoresSafeAreaBottom: Bool = true
+    /// Unselected Item Color
+    @IBInspectable var itemColor: UIColor = .blue
+    /// Selected Item Color
+    @IBInspectable var selectedItemColor: UIColor = .blue
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,7 +178,9 @@ extension FloatingTabBarController {
             gradientEndLocation: gradientEndLocation,
             gradientStartColor: gradientStartColor,
             gradientEndColor: gradientEndColor,
-            ignoresSafeAreaBottom: ignoresSafeAreaBottom
+            ignoresSafeAreaBottom: ignoresSafeAreaBottom,
+            itemColor: itemColor,
+            selectedItemColor: selectedItemColor
         )
         
         Config.shared.setConfig(model: configModel)
@@ -221,14 +227,14 @@ extension FloatingTabBarController {
                 (customTabBarWidth - totalInnerHorizontalSpacing) / CGFloat(tabBarItemsCount)
             )
             appearance.stackedItemSpacing = Config.shared.itemSpacing
-            appearance.stackedLayoutAppearance.normal.iconColor = .blue
-            appearance.stackedLayoutAppearance.selected.iconColor = .blue
+            appearance.stackedLayoutAppearance.normal.iconColor = itemColor
+            appearance.stackedLayoutAppearance.selected.iconColor = selectedItemColor
             
             // iPad
-            appearance.inlineLayoutAppearance.normal.iconColor = .blue
-            appearance.inlineLayoutAppearance.selected.iconColor = .blue
-            appearance.compactInlineLayoutAppearance.normal.iconColor = .blue
-            appearance.compactInlineLayoutAppearance.selected.iconColor = .blue
+            appearance.inlineLayoutAppearance.normal.iconColor = itemColor
+            appearance.inlineLayoutAppearance.selected.iconColor = selectedItemColor
+            appearance.compactInlineLayoutAppearance.normal.iconColor = itemColor
+            appearance.compactInlineLayoutAppearance.selected.iconColor = selectedItemColor
             
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
