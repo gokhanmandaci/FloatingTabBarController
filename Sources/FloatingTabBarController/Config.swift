@@ -16,12 +16,16 @@ final class Config {
     // MARK: - Configuration Parameters
     var tabBarHeight: CGFloat = 49
     var bottomSpacing: CGFloat = 15
+    var iPadBottomSpacing: CGFloat = 15
     var horizontalSpacing: CGFloat = 15
+    var iPadHorizontalSpacing: CGFloat = 15
     var innerHorizontalSpacing: CGFloat = 18
+    var iPadInnerHorizontalSpacing: CGFloat = 18
     var itemSpacing: CGFloat = 1
     var positioning: Int = 0
     var minimumItemWidth: CGFloat = 78
     var cornerRadius: CGFloat = -1
+    var iPadCornerRadius: CGFloat = -1
     var borderWidth: CGFloat = -1
     var borderColor: UIColor = .white
     var backgroundColor: UIColor = .clear
@@ -43,12 +47,16 @@ final class Config {
     func setConfig(model: ConfigModel) {
         tabBarHeight = model.tabBarHeight
         bottomSpacing = model.bottomSpacing
+        iPadBottomSpacing = model.iPadBottomSpacing
         horizontalSpacing = model.horizontalSpacing
+        iPadHorizontalSpacing = model.iPadHorizontalSpacing
         innerHorizontalSpacing = model.innerHorizontalSpacing
+        iPadInnerHorizontalSpacing = model.iPadInnerHorizontalSpacing
         itemSpacing = model.itemSpacing
         positioning = model.positioning
         minimumItemWidth = model.minimumItemWidth
         cornerRadius = model.cornerRadius
+        iPadCornerRadius = model.iPadCornerRadius
         borderWidth = model.borderWidth
         borderColor = model.borderColor
         backgroundColor = model.backgroundColor

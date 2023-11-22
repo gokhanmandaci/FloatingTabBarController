@@ -40,10 +40,16 @@ class FloatingTabBarController: UITabBarController {
     // MARK: - Inspectable Parameters
     /// Custom tab bar width default is 15
     @IBInspectable var bottomSpacing: CGFloat = 15
+    /// Custom tab bar width default is 15
+    @IBInspectable var iPadBottomSpacing: CGFloat = 15
     /// Left and Right spaces default is 15
     @IBInspectable var horizontalSpacing: CGFloat = 15
+    /// Custom tab bar width default is 15
+    @IBInspectable var iPadHorizontalSpacing: CGFloat = 15
     /// Left and Right spaces default is 18
     @IBInspectable var innerHorizontalSpacing: CGFloat = 18
+    /// Left and Right spaces default is 18
+    @IBInspectable var iPadInnerHorizontalSpacing: CGFloat = 18
     /// Stack item spacing default is 1
     @IBInspectable var itemSpacing: CGFloat = 1
     /// Stack item positioning
@@ -52,6 +58,8 @@ class FloatingTabBarController: UITabBarController {
     @IBInspectable var minimumItemWidth: CGFloat = 78
     /// Tab bar corner radius default is -1 means ellipse
     @IBInspectable var cornerRadius: CGFloat = -1
+    /// Tab bar corner radius default is -1 means ellipse
+    @IBInspectable var iPadCornerRadius: CGFloat = -1
     /// Tab bar border width
     @IBInspectable var borderWidth: CGFloat = -1
     /// Tab bar border color default is white
@@ -101,10 +109,15 @@ class FloatingTabBarController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        var bottomSpacingValue: CGFloat = Config.shared.bottomSpacing
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            bottomSpacingValue = Config.shared.iPadBottomSpacing
+        }
+        
         if Config.shared.ignoresSafeAreaBottom {
-            tabBar.frame.origin.y = view.frame.height - (tabBarHeight + Config.shared.bottomSpacing)
+            tabBar.frame.origin.y = view.frame.height - (tabBarHeight + bottomSpacingValue)
         } else {
-            tabBar.frame.origin.y = view.frame.height - (tabBarHeight + Config.shared.bottomSpacing + view.safeAreaInsets.bottom)
+            tabBar.frame.origin.y = view.frame.height - (tabBarHeight + bottomSpacingValue + view.safeAreaInsets.bottom)
         }
         
         setImageInsets()
@@ -162,8 +175,14 @@ extension FloatingTabBarController {
     /// Initialize tab bar controller
     private func initTabBarController() {
         tabBarHeight = Config.shared.tabBarHeight
-        totalHorizontalSpacing = Config.shared.horizontalSpacing * 2
-        totalInnerHorizontalSpacing = Config.shared.innerHorizontalSpacing * 2
+        var horizontalSpacingValue: CGFloat = Config.shared.horizontalSpacing
+        var innerHorizontalSpacingValue: CGFloat = Config.shared.innerHorizontalSpacing
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            horizontalSpacingValue = Config.shared.iPadHorizontalSpacing
+            innerHorizontalSpacingValue = Config.shared.iPadInnerHorizontalSpacing
+        }
+        totalHorizontalSpacing = horizontalSpacingValue * 2
+        totalInnerHorizontalSpacing = innerHorizontalSpacingValue * 2
         tabBarItemsCount = tabBar.items?.count ?? 0
         
         delegate = self
@@ -276,7 +295,12 @@ extension FloatingTabBarController {
     /// Creates a custom view for tab bar
     /// - Returns: UIView
     private func getTabBarView() -> UIView {
-        let tabCornerRadius = Config.shared.cornerRadius == -1 ? tabBarHeight / 2 : Config.shared.cornerRadius
+        var cornerRadiusValue: CGFloat = Config.shared.cornerRadius
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            cornerRadiusValue = Config.shared.iPadCornerRadius
+        }
+        
+        let tabCornerRadius = cornerRadiusValue == -1 ? tabBarHeight / 2 : cornerRadiusValue
         let tabBarView = UIView(frame: getCustomTabBarFrame())
         tabBarView.backgroundColor = Config.shared.backgroundColor
         tabBarView.clipsToBounds = false
@@ -363,7 +387,12 @@ extension FloatingTabBarController {
     /// Creates a bezier path for mask layer
     /// - Returns: UIBezierPath
     private func getMaskPath() -> UIBezierPath {
-        let tabCornerRadius = Config.shared.cornerRadius == -1 ? tabBarHeight / 2 : Config.shared.cornerRadius
+        var cornerRadiusValue: CGFloat = Config.shared.cornerRadius
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            cornerRadiusValue = Config.shared.iPadCornerRadius
+        }
+        
+        let tabCornerRadius = cornerRadiusValue == -1 ? tabBarHeight / 2 : cornerRadiusValue
         let path = UIBezierPath(
             roundedRect: CGRect(
                 x: 0,

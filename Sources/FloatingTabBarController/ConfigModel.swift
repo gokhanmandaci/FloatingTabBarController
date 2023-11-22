@@ -11,12 +11,16 @@ import UIKit
 struct ConfigModel {
     let tabBarHeight: CGFloat
     let bottomSpacing: CGFloat
+    let iPadBottomSpacing: CGFloat
     let horizontalSpacing: CGFloat
+    let iPadHorizontalSpacing: CGFloat
     let innerHorizontalSpacing: CGFloat
+    let iPadInnerHorizontalSpacing: CGFloat
     let itemSpacing: CGFloat
     let positioning: Int
     let minimumItemWidth: CGFloat
     let cornerRadius: CGFloat
+    let iPadCornerRadius: CGFloat
     let borderWidth: CGFloat
     let borderColor: UIColor
     let backgroundColor: UIColor
@@ -38,12 +42,16 @@ struct ConfigModel {
     init(
         tabBarHeight: CGFloat = 64,
         bottomSpacing: CGFloat = 15,
+        ipadBottomSpacing: CGFloat = 15,
         horizontalSpacing: CGFloat = 15,
+        ipadHorizontalSpacing: CGFloat = 15,
         innerHorizontalSpacing: CGFloat = 18,
+        iPadInnerHorizontalSpacing: CGFloat = 18,
         itemSpacing: CGFloat = 1,
         positioning: Int = 0,
         minimumItemWidth: CGFloat = 78,
         cornerRadius: CGFloat = -1,
+        iPadCornerRadius: CGFloat = -1,
         borderWidth: CGFloat = -1,
         borderColor: UIColor = .white,
         backgroundColor: UIColor = .clear,
@@ -64,12 +72,16 @@ struct ConfigModel {
     ) {
         self.tabBarHeight = tabBarHeight
         self.bottomSpacing = bottomSpacing
+        self.iPadBottomSpacing = ipadBottomSpacing
         self.horizontalSpacing = horizontalSpacing
+        self.iPadHorizontalSpacing = ipadHorizontalSpacing
         self.innerHorizontalSpacing = innerHorizontalSpacing
+        self.iPadInnerHorizontalSpacing = iPadInnerHorizontalSpacing
         self.itemSpacing = itemSpacing
         self.positioning = positioning
         self.minimumItemWidth = minimumItemWidth
         self.cornerRadius = cornerRadius
+        self.iPadCornerRadius = iPadCornerRadius
         self.borderWidth = borderWidth
         self.borderColor = borderColor
         self.backgroundColor = backgroundColor
