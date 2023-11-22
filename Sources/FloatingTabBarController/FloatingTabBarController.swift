@@ -137,7 +137,11 @@ extension FloatingTabBarController {
     private func setConfigModel() {
         if let tabBar = tabBar as? FloatingTabBar {
             if tabBar.height != tabBarHeight {
-                tabBarHeight = tabBar.height
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    tabBarHeight = tabBar.iPadHeight
+                } else {
+                    tabBarHeight = tabBar.height
+                }
             }
         }
         
